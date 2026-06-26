@@ -36,6 +36,50 @@
 }
 
 /* ============================================
+   STATS SECTION
+   ============================================ */
+
+.stats-section {
+    position: relative;
+    padding: 80px 0;
+    z-index: 10;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 32px;
+    text-align: center;
+}
+
+.stat-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.stat-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stat-item .stat-number {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 48px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-item .stat-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ============================================
    ABOUT SECTION
    ============================================ */
 
@@ -76,6 +120,19 @@
     position: relative;
 }
 
+.astack .amain img,
+.astack .asm img {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.astack.visible .amain img,
+.astack.visible .asm img {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .amain img {
     border-radius: 18px;
     width: 100%;
@@ -93,6 +150,14 @@
     text-align: center;
     box-shadow: 0 10px 28px rgba(232, 40, 26, 0.4);
     z-index: 3;
+    opacity: 0;
+    transform: translateX(-20px) scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.aexp.visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
 }
 
 .aexp .anum {
@@ -173,6 +238,14 @@
     align-items: flex-start;
     gap: 16px;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fti.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .ftico {
@@ -233,6 +306,14 @@
 .tli {
     display: flex;
     margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.tli.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .tl-content {
@@ -386,6 +467,13 @@
 
 .menu-item {
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.menu-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .mcard {
@@ -521,6 +609,13 @@
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.team-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .team-card:hover {
@@ -589,6 +684,14 @@
     overflow: hidden;
     aspect-ratio: 1;
     cursor: pointer;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.gallery-item.visible {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .gallery-item img {
@@ -799,6 +902,14 @@
     border-radius: 20px;
     color: white;
     width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hrscard.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hrsrow {
@@ -864,6 +975,14 @@
     text-align: center;
     background: linear-gradient(135deg, rgba(156, 197, 255, 0.1), rgba(183, 152, 255, 0.1));
     border: 1px solid rgba(255, 255, 255, 0.08);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cta-banner.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .cta-banner::before {
@@ -980,39 +1099,6 @@
 }
 
 /* ============================================
-   STATS COUNTER
-   ============================================ */
-
-.stats-section {
-    position: relative;
-    padding: 80px 0;
-    z-index: 10;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 32px;
-    text-align: center;
-}
-
-.stat-item .stat-number {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 48px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.stat-item .stat-label {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-/* ============================================
    CONTACT SECTION
    ============================================ */
 
@@ -1123,6 +1209,27 @@
 .map-container iframe {
     margin-top: 40px;
     border-radius: 16px;
+}
+
+/* ============================================
+   FOOTER CREDITS
+   ============================================ */
+
+.footer-bottom .credit-text {
+    margin-top: 8px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.footer-bottom .developer-link {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+.footer-bottom .developer-link:hover {
+    color: #fff;
 }
 
 /* ============================================

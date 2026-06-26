@@ -359,11 +359,47 @@ if (reservationForm) {
 updateCounter(0);
 
 // ============================================
-// ANIMATIONS GSAP POUR TOUTES LES SECTIONS
+// SCROLL ANIMATIONS OBSERVER
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Stats animation avec CountUp
+    // Observer pour les animations au scroll
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+            }
+        });
+    }, observerOptions);
+
+    // Éléments à observer
+    const elementsToObserve = [
+        '.stat-item',
+        '.astack',
+        '.aexp',
+        '.fti',
+        '.tli',
+        '.menu-item',
+        '.team-card',
+        '.gallery-item',
+        '.hrscard',
+        '.cta-banner'
+    ];
+
+    elementsToObserve.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            observer.observe(el);
+        });
+    });
+
+    // Animation GSAP des compteurs
     document.querySelectorAll('.stat-number[data-count]').forEach(el => {
         const target = parseFloat(el.dataset.count);
         const isFloat = target % 1 !== 0;
@@ -384,108 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Animation GSAP des cartes
-    gsap.utils.toArray('.team-card, .mcard, .tescard').forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            ease: "power2.out",
-            delay: i * 0.1
-        });
-    });
-
-    // Animation des features
-    gsap.utils.toArray('.stat-item, .fti').forEach((item, i) => {
-        gsap.from(item, {
-            scrollTrigger: {
-                trigger: item,
-                start: "top 90%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            x: i % 2 === 0 ? -30 : 30,
-            duration: 0.6,
-            ease: "power2.out",
-            delay: i * 0.08
-        });
-    });
-
-    // Animation du CTA banner
-    gsap.from('.cta-banner', {
-        scrollTrigger: {
-            trigger: '.cta-banner',
-            start: "top 80%",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        y: 30,
-        scale: 0.97,
-        duration: 1,
-        ease: "power2.out"
-    });
-
-    // Animation de la timeline
-    gsap.utils.toArray('.tli').forEach((item, i) => {
-        gsap.from(item, {
-            scrollTrigger: {
-                trigger: item,
-                start: "top 85%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            x: i % 2 === 0 ? -50 : 50,
-            duration: 0.8,
-            ease: "power2.out",
-            delay: i * 0.15
-        });
-    });
-
-    // Animation des horaires
-    gsap.from('.hrscard', {
-        scrollTrigger: {
-            trigger: '.hrscard',
-            start: "top 80%",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        scale: 0.95,
-        duration: 1,
-        ease: "power2.out"
-    });
-
-    // Animation de l'image stack
-    gsap.from('.astack', {
-        scrollTrigger: {
-            trigger: '.astack',
-            start: "top 80%",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        x: -50,
-        duration: 1,
-        ease: "power2.out"
-    });
-
-    // Animation du texte about
-    gsap.from('.about-text', {
-        scrollTrigger: {
-            trigger: '.about-text',
-            start: "top 80%",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        x: 50,
-        duration: 1,
-        ease: "power2.out"
-    });
-
-    // Animation des filtres
+    // Animation GSAP des filtres
     gsap.from('.filtbtn', {
         scrollTrigger: {
             trigger: '.filter-buttons',
@@ -538,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// SWIPER POUR LES TÉMOIGNAGES - CORRIGÉ
+// SWIPER POUR LES TÉMOIGNAGES
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -580,7 +515,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Pause autoplay on hover
         const swiperContainer = document.querySelector('.tesSwiper');
         if (swiperContainer) {
             swiperContainer.addEventListener('mouseenter', () => {
