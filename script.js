@@ -538,33 +538,58 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// SWIPER POUR LES TÉMOIGNAGES
+// SWIPER POUR LES TÉMOIGNAGES - CORRIGÉ
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.tesSwiper')) {
-        new Swiper('.tesSwiper', {
+        const swiper = new Swiper('.tesSwiper', {
             slidesPerView: 1,
-            spaceBetween: 30,
-            centeredSlides: true,
+            spaceBetween: 24,
+            centeredSlides: false,
             loop: true,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
+            speed: 800,
+            effect: 'slide',
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+                dynamicBullets: true,
             },
             breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
                 768: {
                     slidesPerView: 1.2,
+                    spaceBetween: 24,
                 },
                 992: {
-                    slidesPerView: 1.5,
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1200: {
+                    slidesPerView: 2,
+                    spaceBetween: 32,
                 }
             }
         });
+
+        // Pause autoplay on hover
+        const swiperContainer = document.querySelector('.tesSwiper');
+        if (swiperContainer) {
+            swiperContainer.addEventListener('mouseenter', () => {
+                swiper.autoplay.stop();
+            });
+            swiperContainer.addEventListener('mouseleave', () => {
+                swiper.autoplay.start();
+            });
+        }
     }
 });
 

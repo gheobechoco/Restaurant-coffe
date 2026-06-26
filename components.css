@@ -43,6 +43,25 @@
     position: relative;
     padding: 120px 0;
     z-index: 10;
+    background-image: url('assets/image-restaurant.jfif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 2, 10, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+#about .section-container {
+    position: relative;
+    z-index: 1;
 }
 
 .about-grid {
@@ -122,6 +141,7 @@
     font-size: 2.5rem;
     font-weight: 900;
     line-height: 1.2;
+    color: #fff;
 }
 
 .about-text .stitle span {
@@ -143,7 +163,7 @@
 .about-text .sdesc {
     font-size: 16px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.76);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 30px;
 }
 
@@ -172,6 +192,7 @@
 .fti h6 {
     font-size: 16px;
     font-weight: 600;
+    color: #fff;
     margin: 0 0 4px;
 }
 
@@ -268,6 +289,7 @@
     font-size: 18px;
     font-weight: 600;
     margin: 8px 0 4px;
+    color: #fff;
 }
 
 .tl-content p {
@@ -421,6 +443,7 @@
     font-size: 22px;
     text-transform: uppercase;
     margin: 0 0 8px;
+    color: #fff;
 }
 
 .mcontent p {
@@ -466,12 +489,138 @@
     font-family: "Bebas Neue", sans-serif;
     font-size: 20px;
     text-transform: uppercase;
+    color: #fff;
 }
 
 .extras-list p {
     margin: 0;
     color: rgba(255,255,255,.66);
     line-height: 1.6;
+}
+
+/* ============================================
+   TEAM SECTION
+   ============================================ */
+
+.team-section {
+    position: relative;
+    padding: 120px 0;
+    z-index: 10;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+}
+
+.team-card {
+    text-align: center;
+    padding: 32px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.team-card .team-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 16px;
+    border: 3px solid rgba(232, 40, 26, 0.3);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover .team-img {
+    border-color: #e8281a;
+    transform: scale(1.05);
+}
+
+.team-card h4 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    margin: 0 0 4px;
+    color: #fff;
+}
+
+.team-role {
+    display: block;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+}
+
+.team-exp {
+    display: block;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   GALLERY SECTION
+   ============================================ */
+
+.gallery-section {
+    position: relative;
+    padding: 120px 0;
+    z-index: 10;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    margin-top: 64px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    opacity: 0;
+    transition: opacity .3s ease;
+    color: #fff;
+}
+
+.gallery-item:hover h3 {
+    opacity: 1;
 }
 
 /* ============================================
@@ -483,52 +632,86 @@
     padding: 120px 0;
     z-index: 10;
     background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+}
+
+#testimonials .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    overflow: visible;
 }
 
 .tesSwiper {
     padding: 20px 10px 50px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
+    overflow: visible !important;
+}
+
+.tesSwiper .swiper-wrapper {
+    overflow: visible !important;
+}
+
+.tesSwiper .swiper-slide {
+    height: auto;
+    overflow: visible !important;
+    padding: 10px;
 }
 
 .tescard {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px 36px;
-    text-align: center;
+    text-align: left;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: visible;
 }
 
 .tescard:hover {
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .tesq {
     font-size: 72px;
     font-family: "Georgia", serif;
     color: #e8281a;
-    line-height: 1;
+    line-height: 0.8;
     margin-bottom: 8px;
-    opacity: 0.6;
+    opacity: 0.4;
+    display: block;
+}
+
+.tesstars {
+    color: #ffd700;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    display: block;
 }
 
 .tess {
     font-size: 16px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.76);
+    color: rgba(255, 255, 255, 0.82);
     margin-bottom: 24px;
     font-style: italic;
+    padding-right: 10px;
 }
 
 .tesusr {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .tesavatar {
@@ -541,27 +724,43 @@
     font-weight: 700;
     font-size: 16px;
     color: #fff;
+    flex-shrink: 0;
+}
+
+.tesusr .tesinfo {
+    display: flex;
+    flex-direction: column;
 }
 
 .tesusr h5 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
+    color: #fff;
 }
 
-.tesusr span {
+.tesusr .tesrole {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* Swiper Pagination */
+.swiper-pagination {
+    bottom: 0 !important;
+    position: relative !important;
+    margin-top: 20px;
+}
+
 .swiper-pagination-bullet {
     background: rgba(255, 255, 255, 0.2);
     opacity: 1;
+    width: 10px;
+    height: 10px;
 }
 
 .swiper-pagination-bullet-active {
     background: #e8281a;
+    width: 24px;
+    border-radius: 10px;
 }
 
 /* ============================================
@@ -650,6 +849,12 @@
 /* ============================================
    CTA BANNER
    ============================================ */
+
+.cta-section {
+    position: relative;
+    padding: 80px 0 120px 0;
+    z-index: 10;
+}
 
 .cta-banner {
     position: relative;
@@ -775,74 +980,14 @@
 }
 
 /* ============================================
-   TEAM SECTION
-   ============================================ */
-
-.team-section {
-    position: relative;
-    padding: 120px 0;
-    z-index: 10;
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 32px;
-}
-
-.team-card {
-    text-align: center;
-    padding: 32px 16px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 0.3s ease;
-}
-
-.team-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-6px);
-    border-color: rgba(255, 255, 255, 0.15);
-}
-
-.team-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 16px;
-    display: grid;
-    place-items: center;
-    font-size: 28px;
-    font-weight: 700;
-    font-family: "Bebas Neue", sans-serif;
-    background: linear-gradient(135deg, #e8281a, #c01e12);
-    color: #ffffff;
-}
-
-.team-card h4 {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 20px;
-    margin: 0 0 4px;
-}
-
-.team-role {
-    display: block;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 4px;
-}
-
-.team-exp {
-    display: block;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* ============================================
    STATS COUNTER
    ============================================ */
+
+.stats-section {
+    position: relative;
+    padding: 80px 0;
+    z-index: 10;
+}
 
 .stats-grid {
     display: grid;
@@ -868,59 +1013,116 @@
 }
 
 /* ============================================
-   GALLERY SECTION
+   CONTACT SECTION
    ============================================ */
 
-.gallery-section {
+.contact-section {
     position: relative;
     padding: 120px 0;
     z-index: 10;
 }
 
-.gallery-grid {
+.contact-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px;
-    margin-top: 64px;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
 }
 
-.gallery-item {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    aspect-ratio: 1;
-    cursor: pointer;
+.contact-form-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .4s ease;
+.contact-info {
+    display: grid;
+    gap: 32px;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.08);
+.info-block h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: #fff;
 }
 
-.gallery-item h3 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.info-block p {
+    color: rgba(255,255,255,.66);
+    font-size: 14px;
+    line-height: 1.6;
     margin: 0;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0,0,0,.6), transparent);
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: -.01em;
-    opacity: 0;
-    transition: opacity .3s ease;
 }
 
-.gallery-item:hover h3 {
-    opacity: 1;
+.info-block a {
+    color: var(--accent);
+    transition: color .2s ease;
+}
+
+.info-block a:hover {
+    color: var(--accent-2);
+}
+
+.contact-form {
+    display: grid;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--ink);
+    font-size: 14px;
+    transition: border-color .2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255,255,255,.42);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: rgba(255,255,255,.28);
+    background: rgba(255,255,255,.08);
+}
+
+.form-submit {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #9cc5ff 0%, #bf7cff 100%);
+    color: #05030a;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin-top: 8px;
+}
+
+.form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(156, 197, 255, 0.3);
+}
+
+.map-container {
+    margin-top: 60px;
+}
+
+.map-container iframe {
+    margin-top: 40px;
+    border-radius: 16px;
 }
 
 /* ============================================
@@ -936,9 +1138,34 @@
     .about-text .stitle {
         font-size: 2rem;
     }
+
+    #testimonials .section-container {
+        padding: 0 20px;
+    }
+
+    .tesSwiper {
+        padding: 20px 5px 50px;
+    }
+
+    .tescard {
+        padding: 30px 24px;
+    }
+
+    .tesq {
+        font-size: 56px;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
 }
 
 @media (max-width: 768px) {
+    .cta-section {
+        padding: 40px 0 80px 0;
+    }
+
     .cta-banner {
         padding: 48px 24px;
     }
@@ -965,7 +1192,6 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Timeline responsive */
     .timeline::before {
         left: 20px;
     }
@@ -991,7 +1217,6 @@
         padding: 16px;
     }
 
-    /* Hours responsive */
     .hrscard {
         padding: 24px 20px;
     }
@@ -1042,7 +1267,8 @@
     #history,
     #menu,
     #testimonials,
-    #hours {
+    #hours,
+    .contact-section {
         padding: 60px 0;
     }
 
@@ -1059,20 +1285,48 @@
         font-size: 12px;
     }
 
+    .tesSwiper {
+        padding: 10px 0 40px;
+    }
+
+    .tesSwiper .swiper-slide {
+        padding: 5px;
+    }
+
     .tescard {
-        padding: 28px 20px;
+        padding: 24px 20px;
     }
 
     .tesq {
-        font-size: 48px;
+        font-size: 44px;
     }
 
     .tess {
         font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .tesstars {
+        font-size: 15px;
+    }
+
+    .tesavatar {
+        width: 44px;
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .tesusr h5 {
+        font-size: 15px;
     }
 
     .mcard-img img {
         height: 180px;
+    }
+
+    .map-container iframe {
+        height: 200px;
+        margin-top: 30px;
     }
 }
 
@@ -1111,5 +1365,29 @@
 
     .mcontent h4 {
         font-size: 20px;
+    }
+
+    .tescard {
+        padding: 20px 16px;
+    }
+
+    .tesq {
+        font-size: 36px;
+    }
+
+    .tess {
+        font-size: 13px;
+    }
+
+    .tesstars {
+        font-size: 13px;
+    }
+
+    #testimonials .section-container {
+        padding: 0 12px;
+    }
+
+    .map-container iframe {
+        height: 180px;
     }
 }
