@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Space — Restaurant</title>
+  <meta name="description" content="NOVA BOWLS - Des bols de smoothie premium préparés avec des ingrédients frais et bio. Découvrez nos recettes uniques à Paris." />
+  <meta name="keywords" content="smoothie bowl, bols healthy, restaurant bio, NOVA BOWLS, Paris" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+  
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+
+  <canvas id="shader-canvas" aria-hidden="true"></canvas>
+  <div id="bg-a" aria-hidden="true"></div>
+  <div id="bg-b" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="site-nav" aria-label="Navigation principale">
+    <a href="#home" class="brand" aria-label="NOVA BOWLS accueil">
+      <span class="brand-mark" aria-hidden="true">BS</span>
+      <span>BLACK SPACE</span>
+    </a>
+
+    <div class="nav-pill" aria-label="Navigation">
+      <a href="#about" class="nav-link">Notre Histoire</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#team" class="nav-link">Équipe</a>
+      <a href="#testimonials" class="nav-link">Avis</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <div class="nav-action">
+      <button class="magnetic-cta" id="reserve-btn">Réserver</button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="vertical-index" aria-label="Sélecteur de bol">
+      <button class="dot active" data-dot="0" aria-label="Bol Myrtille"></button>
+      <button class="dot" data-dot="1" aria-label="Bol Fraise"></button>
+      <button class="dot" data-dot="2" aria-label="Bol Chocolat"></button>
+      <button class="dot" data-dot="3" aria-label="Bol Mûre"></button>
+    </div>
+
+    <div class="slider">
+      <div class="slide active" data-accent="#9cc5ff" data-accent-2="#b798ff">
+        <div class="title-wrap"><div class="title-anim anim" data-word="Myrtille">Myrtille</div></div>
+        <div class="lens-stage">
+          <div class="focus-lens lens-anim anim"></div>
+          <div class="ring-label ring-anim anim" aria-hidden="true">
+            <svg class="orbit-text" viewBox="0 0 300 300">
+              <defs><path id="orbit-1" d="M150,150 m-122,0 a122,122 0 1,1 244,0 a122,122 0 1,1 -244,0" /></defs>
+              <text><textPath href="#orbit-1">INGRÉDIENTS FRAIS • MÉLANGÉ À FROID • FRUITS RÉELS • </textPath></text>
+            </svg>
+          </div>
+          <div class="bowl-wrap"><img class="bowl-anim anim" src="https://image.noelshack.com/fichiers/2026/24/5/1781276649-image-43.jpg" alt="Bol Berry Pure aux myrtilles"></div>
+        </div>
+        <img class="ingredient anim ing-1" src="https://image.noelshack.com/fichiers/2026/24/5/1781276712-image-50.png" alt="">
+        <img class="ingredient anim ing-2" src="https://image.noelshack.com/fichiers/2026/24/5/1781276712-image-49.png" alt="">
+        <img class="ingredient anim ing-3" src="https://image.noelshack.com/fichiers/2026/24/5/1781276712-image-48.png" alt="">
+        <article class="flavour-panel content-anim anim">
+          <h2>Berry Pure</h2>
+          <p>Myrtilles fraîches mélangées avec lait d'amande, garni de graines de chia et flocons de noix de coco grillés.</p>
+        </article>
+      </div>
+
+      <div class="slide" data-accent="#ff928d" data-accent-2="#ffc0d0">
+        <div class="title-wrap"><div class="title-anim anim" data-word="Fraise">Fraise</div></div>
+        <div class="lens-stage">
+          <div class="focus-lens lens-anim anim"></div>
+          <div class="ring-label ring-anim anim" aria-hidden="true">
+            <svg class="orbit-text" viewBox="0 0 300 300">
+              <defs><path id="orbit-2" d="M150,150 m-122,0 a122,122 0 1,1 244,0 a122,122 0 1,1 -244,0" /></defs>
+              <text><textPath href="#orbit-2">MÛRES AU SOLEIL • MIEL BRUT • BANANE • NOIX DE COCO • </textPath></text>
+            </svg>
+          </div>
+          <div class="bowl-wrap"><img class="bowl-anim anim" src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-36.jpg" alt="Bol Pink Bliss aux fraises"></div>
+        </div>
+        <img class="ingredient anim ing-1" src="https://image.noelshack.com/fichiers/2026/24/5/1781276759-image-39.png" alt="">
+        <img class="ingredient anim ing-2" src="https://image.noelshack.com/fichiers/2026/24/5/1781276759-image-40.png" alt="">
+        <img class="ingredient anim ing-3" src="https://image.noelshack.com/fichiers/2026/24/5/1781276759-image-38.png" alt="">
+        <article class="flavour-panel content-anim anim">
+          <h2>Pink Bliss</h2>
+          <p>Fraises mûres au soleil avec banane, noix de coco râpée et un trait de miel brut.</p>
+        </article>
+      </div>
+
+      <div class="slide" data-accent="#ffd08a" data-accent-2="#bd7b42">
+        <div class="title-wrap"><div class="title-anim anim" data-word="Chocolat">Chocolat</div></div>
+        <div class="lens-stage">
+          <div class="focus-lens lens-anim anim"></div>
+          <div class="ring-label ring-anim anim" aria-hidden="true">
+            <svg class="orbit-text" viewBox="0 0 300 300">
+              <defs><path id="orbit-3" d="M150,150 m-122,0 a122,122 0 1,1 244,0 a122,122 0 1,1 -244,0" /></defs>
+              <text><textPath href="#orbit-3">CACAO RICHE • BANANE • AMANDES • NOIX DE COCO • </textPath></text>
+            </svg>
+          </div>
+          <div class="bowl-wrap"><img class="bowl-anim anim" src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-35.jpg" alt="Bol Cocoa Crush au chocolat"></div>
+        </div>
+        <img class="ingredient anim ing-1" src="https://image.noelshack.com/fichiers/2026/24/5/1781276823-image-44.png" alt="">
+        <img class="ingredient anim ing-2" src="https://image.noelshack.com/fichiers/2026/24/5/1781276823-image-42.png" alt="">
+        <img class="ingredient anim ing-3" src="https://image.noelshack.com/fichiers/2026/24/5/1781276823-image-41.png" alt="">
+        <article class="flavour-panel content-anim anim">
+          <h2>Cocoa Crush</h2>
+          <p>Base de smoothie au cacao riche garnie de banane tranchée, amandes grillées et flocons de noix de coco.</p>
+        </article>
+      </div>
+
+      <div class="slide" data-accent="#e287ff" data-accent-2="#9d73ff">
+        <div class="title-wrap"><div class="title-anim anim" data-word="Mûre">Mûre</div></div>
+        <div class="lens-stage">
+          <div class="focus-lens lens-anim anim"></div>
+          <div class="ring-label ring-anim anim" aria-hidden="true">
+            <svg class="orbit-text" viewBox="0 0 300 300">
+              <defs><path id="orbit-4" d="M150,150 m-122,0 a122,122 0 1,1 244,0 a122,122 0 1,1 -244,0" /></defs>
+              <text><textPath href="#orbit-4">BAIES SAUVAGES • CRÈME DE NOIX DE COCO • CHIA • AMANDES • </textPath></text>
+            </svg>
+          </div>
+          <div class="bowl-wrap"><img class="bowl-anim anim" src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-34.jpg" alt="Bol Dark Berry aux mûres"></div>
+        </div>
+        <img class="ingredient anim ing-1" src="https://image.noelshack.com/fichiers/2026/24/5/1781276823-image-47.png" alt="">
+        <img class="ingredient anim ing-2" src="https://image.noelshack.com/fichiers/2026/24/5/1781276823-image-46.png" alt="">
+        <img class="ingredient anim ing-3" src="https://image.noelshack.com/fichiers/2026/24/5/1781276823-image-45.png" alt="">
+        <article class="flavour-panel content-anim anim">
+          <h2>Dark Berry</h2>
+          <p>Mûres sauvages avec crème de noix de coco, pignons de pin, graines de chia et paillettes d'amande grillées.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="slide-nav">
+      <span class="counter" id="counter">01 / 04</span>
+      <button class="arrow-btn" id="prev" aria-label="Diapositive précédente">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M15 18 9 12l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="arrow-btn" id="next" aria-label="Diapositive suivante">
+        <svg viewBox="0 0 24 24" fill="none"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="stats-section" id="stats">
+    <div class="section-container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-count="5000">0</div>
+          <div class="stat-label">Bols servis</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="15">0</div>
+          <div class="stat-label">Recettes uniques</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="98">0</div>
+          <div class="stat-label">Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="4.9">0</div>
+          <div class="stat-label">Note moyenne</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION ABOUT -->
+  <section id="about">
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-image">
+          <div class="astack">
+            <div class="aexp">
+              <span class="anum">12+</span>
+              <small>Années d'<br>Excellence</small>
+            </div>
+            <div class="amain">
+              <img src="https://via.placeholder.com/600x800/417972/ffffff?text=Restaurant" alt="Restaurant Black Space">
+            </div>
+            <div class="asm">
+              <img src="https://via.placeholder.com/300x300/ffd08a/ffffff?text=Food" alt="Food">
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="slbl">Notre Histoire</span>
+          <h2 class="stitle">Nous vous invitons à découvrir<br>notre <span>Restaurant</span></h2>
+          <div class="sline lft"></div>
+          <p class="sdesc">Fondé en 2020, Black Space a commencé comme un petit coin de paradis avec un grand rêve : servir des bols qui rassemblent les gens. Aujourd'hui, nous sommes fiers de servir des milliers de clients heureux chaque semaine avec la même passion qui a tout déclenché.</p>
+          
+          <div class="fti">
+            <div class="ftico"><i class="fas fa-leaf"></i></div>
+            <div>
+              <h6>100% Ingrédients Frais</h6>
+              <p>Nous nous approvisionnons localement et durablement.</p>
+            </div>
+          </div>
+          
+          <div class="fti">
+            <div class="ftico"><i class="fas fa-trophy"></i></div>
+            <div>
+              <h6>Recettes Récompensées</h6>
+              <p>Nos recettes signatures ont remporté des prix culinaires 3 années de suite.</p>
+            </div>
+          </div>
+          
+          <div class="fti">
+            <div class="ftico"><i class="fas fa-rocket"></i></div>
+            <div>
+              <h6>Livraison Ultra-Rapide</h6>
+              <p>Commandez en ligne et recevez vos bols en moins de 25 minutes.</p>
+            </div>
+          </div>
+          
+          <a href="#menu" class="btn-red"><i class="fas fa-book-open me-2"></i>Voir le Menu Complet</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION HISTORY (Timeline) -->
+  <section id="history">
+    <div class="section-container">
+      <div class="text-center mb-5">
+        <span class="slbl">Notre Parcours</span>
+        <h2 class="stitle">Une Histoire de <span>Restaurant</span></h2>
+        <div class="sline mx-auto"></div>
+      </div>
+      
+      <div class="timeline">
+        <div class="tli">
+          <div class="tl-content tl-left">
+            <div class="tlyear">2020</div>
+            <h5>Naissance de Black Space</h5>
+            <p>Black Space ouvre ses portes dans un petit local de 20 couverts sur la Rue de la Santé.</p>
+          </div>
+          <div class="tl-center">
+            <div class="tldot"></div>
+          </div>
+          <div class="tl-right"></div>
+        </div>
+        
+        <div class="tli">
+          <div class="tl-left"></div>
+          <div class="tl-center">
+            <div class="tldot"></div>
+          </div>
+          <div class="tl-content tl-right">
+            <div class="tlyear">2022</div>
+            <h5>Concept Smoothie Bowl</h5>
+            <p>Évolution vers les bols de smoothie premium avec des chefs formés à la nutrition.</p>
+          </div>
+        </div>
+        
+        <div class="tli">
+          <div class="tl-content tl-left">
+            <div class="tlyear">2024</div>
+            <h5>Expansion et Reconnaissance</h5>
+            <p>Ouverture d'un deuxième espace et reconnaissance nationale pour nos recettes innovantes.</p>
+          </div>
+          <div class="tl-center">
+            <div class="tldot"></div>
+          </div>
+          <div class="tl-right"></div>
+        </div>
+        
+        <div class="tli">
+          <div class="tl-left"></div>
+          <div class="tl-center">
+            <div class="tldot"></div>
+          </div>
+          <div class="tl-content tl-right">
+            <div class="tlyear">2025</div>
+            <h5>Leader du Healthy Food</h5>
+            <p>Black Space devient une référence incontournable des bols sains et gourmands à Paris.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU SECTION -->
+  <section id="menu">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="slbl">What's Cooking</span>
+        <h2 class="stitle">Our Delicious <span>Menu</span></h2>
+        <div class="sline"></div>
+      </div>
+
+      <!-- Filtres -->
+      <div class="filter-buttons">
+        <button class="filtbtn active" data-f="all">All</button>
+        <button class="filtbtn" data-f="berry">Baies</button>
+        <button class="filtbtn" data-f="tropical">Tropicaux</button>
+        <button class="filtbtn" data-f="choco">Chocolat</button>
+      </div>
+
+      <div class="menu-grid" id="mgrid">
+        <!-- Berry Pure -->
+        <div class="menu-item" data-category="berry">
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276649-image-43.jpg" alt="Berry Pure">
+              <span class="mcard-badge">Best Seller</span>
+            </div>
+            <div class="mcontent">
+              <h4>Berry Pure</h4>
+              <p>Myrtilles, amande, chia, noix de coco</p>
+              <div class="mcard-footer">
+                <span class="price">5 000 FCFA</span>
+                <span class="rating">★ 4.8 (86)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pink Bliss -->
+        <div class="menu-item" data-category="berry">
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-36.jpg" alt="Pink Bliss">
+              <span class="mcard-badge">Nouveau</span>
+            </div>
+            <div class="mcontent">
+              <h4>Pink Bliss</h4>
+              <p>Fraise, banane, miel brut, noix de coco</p>
+              <div class="mcard-footer">
+                <span class="price">5 000 FCFA</span>
+                <span class="rating">★ 4.9 (124)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cocoa Crush -->
+        <div class="menu-item" data-category="choco">
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-35.jpg" alt="Cocoa Crush">
+              <span class="mcard-badge">Favori</span>
+            </div>
+            <div class="mcontent">
+              <h4>Cocoa Crush</h4>
+              <p>Cacao, banane, amande, noix de coco</p>
+              <div class="mcard-footer">
+                <span class="price">5 500 FCFA</span>
+                <span class="rating">★ 4.7 (203)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark Berry -->
+        <div class="menu-item" data-category="berry">
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-34.jpg" alt="Dark Berry">
+              <span class="mcard-badge">Détox</span>
+            </div>
+            <div class="mcontent">
+              <h4>Dark Berry</h4>
+              <p>Mûre, crème de coco, chia, amande</p>
+              <div class="mcard-footer">
+                <span class="price">5 500 FCFA</span>
+                <span class="rating">★ 4.6 (74)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tropical Sunrise -->
+        <div class="menu-item" data-category="tropical">
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://via.placeholder.com/400x300/ff928d/ffffff?text=Tropical+Sunrise" alt="Tropical Sunrise">
+              <span class="mcard-badge">Exotique</span>
+            </div>
+            <div class="mcontent">
+              <h4>Tropical Sunrise</h4>
+              <p>Mangue, ananas, noix de coco, granola</p>
+              <div class="mcard-footer">
+                <span class="price">5 000 FCFA</span>
+                <span class="rating">★ 4.8 (67)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Peanut Power -->
+        <div class="menu-item" data-category="choco">
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://via.placeholder.com/400x300/ffd08a/ffffff?text=Peanut+Power" alt="Peanut Power">
+              <span class="mcard-badge">Énergisant</span>
+            </div>
+            <div class="mcontent">
+              <h4>Peanut Power</h4>
+              <p>Beurre cacahuète, banane, cacao, miel</p>
+              <div class="mcard-footer">
+                <span class="price">5 500 FCFA</span>
+                <span class="rating">★ 4.9 (55)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-extras">
+        <h3>Suppléments</h3>
+        <div class="extras-list">
+          <p>Granola artisanal +500 FCFA • Miel brut +250 FCFA • Fruits frais +400 FCFA • Noix variées +400 FCFA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section class="team-section" id="team">
+    <div class="section-container">
+      <h2 class="section-title">Notre Équipe Culinaire</h2>
+      <p class="section-subtitle">Rencontrez nos chefs experts</p>
+      
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">AM</div>
+          <h4>Alice Mortal</h4>
+          <span class="team-role">Chef Exécutif</span>
+          <span class="team-exp">12 ans d'expérience</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">MC</div>
+          <h4>Michael Corn</h4>
+          <span class="team-role">Maître Grilleur</span>
+          <span class="team-exp">8 ans d'expérience</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">FC</div>
+          <h4>Faz Chowdel</h4>
+          <span class="team-role">Chef Pâtissier</span>
+          <span class="team-exp">10 ans d'expérience</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">WL</div>
+          <h4>William Latnum</h4>
+          <span class="team-role">Artisan Pizza</span>
+          <span class="team-exp">9 ans d'expérience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-container">
+      <h2 class="section-title">Galerie</h2>
+      <p class="section-subtitle">Découvrez la beauté de nos créations</p>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276649-image-43.jpg" alt="Berry Pure">
+          <h3>Berry Pure</h3>
+        </div>
+        <div class="gallery-item">
+          <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-36.jpg" alt="Pink Bliss">
+          <h3>Pink Bliss</h3>
+        </div>
+        <div class="gallery-item">
+          <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-35.jpg" alt="Cocoa Crush">
+          <h3>Cocoa Crush</h3>
+        </div>
+        <div class="gallery-item">
+          <img src="https://image.noelshack.com/fichiers/2026/24/5/1781276648-image-34.jpg" alt="Dark Berry">
+          <h3>Dark Berry</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section id="testimonials">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="slbl">What People Say</span>
+        <h2 class="stitle">Our Customers <span>Feedback</span></h2>
+        <div class="sline"></div>
+      </div>
+
+      <div class="swiper tesSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="tescard">
+              <div class="tesq">"</div>
+              <p class="tess">Commande livrée en 22 minutes, bols frais et généreux. Black Space est devenu mon refuge comfort food préféré.</p>
+              <div class="tesusr">
+                <div class="tesavatar">CF</div>
+                <div>
+                  <h5>Cameron Fox</h5>
+                  <span>Blogueur culinaire</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="tescard">
+              <div class="tesq">"</div>
+              <p class="tess">Le Berry Pure m'a époustouflée. Je ne m'attendais pas à cette qualité. Ambiance super, personnel très sympa. Je recommande !</p>
+              <div class="tesusr">
+                <div class="tesavatar">PS</div>
+                <div>
+                  <h5>Priya Sharma</h5>
+                  <span>Passionnée de food</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="tescard">
+              <div class="tesq">"</div>
+              <p class="tess">Nous avons fait livrer pour une fête de 50 personnes et tout était parfait : frais, délicieux, à l'heure et bien présenté. Mention spéciale pour le Cocoa Crush !</p>
+              <div class="tesusr">
+                <div class="tesavatar">DP</div>
+                <div>
+                  <h5>David Park</h5>
+                  <span>Client entreprise</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION HOURS -->
+  <section id="hours">
+    <div class="hrsbg"></div>
+    <div class="section-container" style="position:relative; z-index:2;">
+      <div class="text-center mb-5">
+        <span class="slbl" style="color:#a5d6bc;">Horaires d'ouverture</span>
+        <h2 class="stitle text-white">Nous sommes ouverts <span style="color:#f6a623;">pour vous</span></h2>
+        <div class="sline mx-auto"></div>
+      </div>
+      
+      <div class="hours-wrapper">
+        <div class="hrscard">
+          <div class="hrsrow">
+            <span class="hrsday"><i class="fas fa-calendar-day me-2"></i>Lundi - Mardi</span>
+            <div class="d-flex align-items-center gap-2">
+              <div class="hdot off"></div>
+              <span class="hrstime" style="color:#ff6b6b;">Fermé</span>
+            </div>
+          </div>
+          <div class="hrsrow">
+            <span class="hrsday"><i class="fas fa-calendar-day me-2"></i>Mercredi - Jeudi</span>
+            <div class="d-flex align-items-center gap-2">
+              <div class="hdot on"></div>
+              <span class="hrstime">09:00 - 22:00</span>
+            </div>
+          </div>
+          <div class="hrsrow">
+            <span class="hrsday"><i class="fas fa-calendar-day me-2"></i>Vendredi</span>
+            <div class="d-flex align-items-center gap-2">
+              <div class="hdot on"></div>
+              <span class="hrstime">09:00 - 00:00</span>
+            </div>
+          </div>
+          <div class="hrsrow">
+            <span class="hrsday"><i class="fas fa-calendar-day me-2"></i>Samedi</span>
+            <div class="d-flex align-items-center gap-2">
+              <div class="hdot on"></div>
+              <span class="hrstime">10:00 - 00:00</span>
+            </div>
+          </div>
+          <div class="hrsrow">
+            <span class="hrsday"><i class="fas fa-calendar-day me-2"></i>Dimanche</span>
+            <div class="d-flex align-items-center gap-2">
+              <div class="hdot on"></div>
+              <span class="hrstime">11:00 - 21:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section">
+    <div class="section-container">
+      <div class="cta-banner">
+        <h2>Prêt à déguster ?</h2>
+        <p>Venez découvrir nos bols dans notre espace ou commandez en ligne pour une dégustation chez vous.</p>
+        <div class="btn-group">
+          <button class="magnetic-cta" onclick="document.getElementById('reservationModal').classList.add('active')">Réserver une table</button>
+          <button class="magnetic-cta" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);" onclick="document.querySelector('#menu').scrollIntoView({behavior:'smooth'})">Voir le menu</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="section-container">
+      <h2 class="section-title">Nous Contacter</h2>
+      
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="info-block">
+            <h3>Adresse</h3>
+            <p>123 Rue de la Santé<br>75000 Paris, France</p>
+          </div>
+          
+          <div class="info-block">
+            <h3>Téléphone</h3>
+            <p><a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+          </div>
+          
+          <div class="info-block">
+            <h3>Email</h3>
+            <p><a href="mailto:hello@novabowls.fr">hello@novabowls.fr</a></p>
+          </div>
+          
+          <div class="info-block">
+            <h3>Horaires</h3>
+            <p>Lun - Ven: 10h - 20h<br>Sam - Dim: 11h - 21h</p>
+          </div>
+
+          <div class="info-block">
+            <h3>Suivez-nous</h3>
+            <div class="social-share">
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="Twitter">Twitter</a>
+              <a href="#" aria-label="TikTok">TikTok</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <input type="text" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Votre email" required>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Votre message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="section-container">
+      <div class="logo-strip">
+        <span class="logo-strip-item">Bio</span>
+        <span class="logo-strip-item">Local</span>
+        <span class="logo-strip-item">Sain</span>
+        <span class="logo-strip-item">Durable</span>
+        <span class="logo-strip-item">Artisanal</span>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>NOVA BOWLS</h4>
+          <p>Des bols sains et délicieux pour une vie meilleure.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Liens Rapides</h4>
+          <a href="#about">Notre Histoire</a>
+          <a href="#menu">Menu</a>
+          <a href="#team">Équipe</a>
+          <a href="#testimonials">Avis</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Réseaux Sociaux</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NOVA BOWLS. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RESERVATION MODAL -->
+  <div class="modal" id="reservationModal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2>Réserver une Table</h2>
+      <p style="color:rgba(255,255,255,0.5);margin-bottom:24px;font-size:14px;">Réservez votre table pour une expérience culinaire mémorable. Nous recommandons de réserver 24h à l'avance pour les week-ends.</p>
+      
+      <form class="reservation-form" id="reservationForm">
+        <div class="form-group">
+          <input type="text" placeholder="Nom complet" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Téléphone" required>
+        </div>
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <input type="date" required>
+          </div>
+          <div class="form-group">
+            <input type="time" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <select required>
+            <option value="">Nombre de personnes</option>
+            <option value="1">1 personne</option>
+            <option value="2">2 personnes</option>
+            <option value="3">3 personnes</option>
+            <option value="4">4 personnes</option>
+            <option value="5">5 personnes</option>
+            <option value="6">6 personnes</option>
+            <option value="7">7 personnes</option>
+            <option value="8">8 personnes</option>
+            <option value="9">9 personnes</option>
+            <option value="10+">10+ personnes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Demandes spéciales (allergies, régime, occasion...)" rows="3"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Confirmer la Réservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- BIBLIOTHÈQUES JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- SCRIPTS DU SITE -->
+  <script src="script.js"></script>
+</body>
+</html>
